@@ -1,0 +1,10 @@
+<!doctype html>
+<title>Login</title>
+<h1>Mini Store - Login</h1>
+{% if error %}<p style="color:red">{{ error }}</p>{% endif %}
+<form method="post">
+  <input name="username" placeholder="Username">
+  <input name="password" type="password" placeholder="Password">
+  <button type="submit">Login</button>
+</form>
+<p><a href="/search">Search products</a></p>

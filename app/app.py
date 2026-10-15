@@ -55,11 +55,10 @@ def login():
         password = request.form.get("password", "")
 
         # VULN (A03 Injection): SQL built by string concatenation, no validation
-        query = ("SELECT * FROM users WHERE username = '" + username +
-                 "' AND password = '" + password + "'")
+        query = "SELECT * FROM users WHERE username = ? AND password = ?"
         try:
             db = get_db()
-            user = db.execute(query).fetchone()
+            user = db.execute(query, (username, password)).fetchone()
             db.close()
         except Exception as e:
             # VULN (A05): leaks raw DB error to the user
@@ -95,9 +94,10 @@ def search():
     db = get_db()
     if q:
         # VULN (A03 Injection): string-concatenated query
-        query = "SELECT name, price FROM products WHERE name LIKE '%" + q + "%'"
+        query = "SELECT name, price FROM products WHERE name LIKE ?"
         try:
-            results = db.execute(query).fetchall()
+            db = get_db()
+            results = db.execute(query, ('%' + q + '%',)).fetchall()
         except Exception as e:
             db.close()
             return "Database error: " + str(e), 500
@@ -111,4 +111,4 @@ def search():
 if __name__ == "__main__":
     init_db()
     # VULN (A05): debug mode on and listening on all interfaces
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="127.0.0.1", port=5000, debug=False)

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Shop - Circuit &amp; Co.{% endblock %}
+{% block content %}
+<section class="hero">
+  <h1>Desk gear, without the guesswork.</h1>
+  <form class="searchbar" method="get" action="{{ url_for('search') }}">
+    <input name="q" type="search" placeholder="Search laptops, keyboards, headphones" aria-label="Search products">
+    <button type="submit">Search</button>
+  </form>
+</section>
+
+<section class="wrap">
+{% if q %}
+  <h2 class="section-title">Results for: {{ q|safe }}</h2>
+  {% if results %}
+    <div class="grid">
+    {% for name, price in results %}
+      <article class="product">
+        <div class="tile">{{ name[0] if name else '?' }}</div>
+        <h3>{{ name }}</h3>
+        <p class="price">${{ price }}</p>
+      </article>
+    {% endfor %}
+    </div>
+  {% else %}
+    <p class="empty">Nothing matched that search. Try a shorter word, like "key" or "head".</p>
+  {% endif %}
+{% else %}
+  <h2 class="section-title">All products</h2>
+  <div class="grid">
+  {% for name, price, category in catalog %}
+    <article class="product">
+      <div class="tile">{{ name[0] }}</div>
+      <p class="cat">{{ category }}</p>
+      <h3>{{ name }}</h3>
+      <p class="price">${{ '%.2f'|format(price) }}</p>
+    </article>
+  {% endfor %}
+  </div>
+{% endif %}
+</section>
+{% endblock %}

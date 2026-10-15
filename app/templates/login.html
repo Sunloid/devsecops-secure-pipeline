@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Log in - Circuit &amp; Co.{% endblock %}
+{% block content %}
+<section class="wrap narrow">
+  <h1 class="page-title">Log in</h1>
+  <p class="sub">Use your store account to see your dashboard.</p>
+  {% if error %}<p class="alert" role="alert">{{ error }}</p>{% endif %}
+  <form class="card form" method="post">
+    <label for="username">Username</label>
+    <input id="username" name="username" autocomplete="username">
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" autocomplete="current-password">
+    <button type="submit">Log in</button>
+  </form>
+</section>
+{% endblock %}

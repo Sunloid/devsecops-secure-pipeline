@@ -23,14 +23,18 @@ def init_db():
         DROP TABLE IF EXISTS users;
         DROP TABLE IF EXISTS products;
         CREATE TABLE users (id INTEGER PRIMARY KEY, username TEXT, password TEXT, role TEXT);
-        CREATE TABLE products (id INTEGER PRIMARY KEY, name TEXT, price REAL);
+        CREATE TABLE products (id INTEGER PRIMARY KEY, name TEXT, price REAL, category TEXT);
         -- VULN (A02): passwords stored in plain text
         INSERT INTO users (username, password, role) VALUES ('admin', 'admin123', 'admin');
         INSERT INTO users (username, password, role) VALUES ('alice', 'password1', 'user');
-        INSERT INTO products (name, price) VALUES ('Laptop', 899.99);
-        INSERT INTO products (name, price) VALUES ('Headphones', 59.50);
-        INSERT INTO products (name, price) VALUES ('Keyboard', 39.00);
-        INSERT INTO products (name, price) VALUES ('Monitor', 199.00);
+        INSERT INTO products (name, price, category) VALUES ('Laptop', 899.99, 'Computers');
+        INSERT INTO products (name, price, category) VALUES ('Monitor', 199.00, 'Computers');
+        INSERT INTO products (name, price, category) VALUES ('Keyboard', 39.00, 'Accessories');
+        INSERT INTO products (name, price, category) VALUES ('Mouse', 24.50, 'Accessories');
+        INSERT INTO products (name, price, category) VALUES ('Headphones', 59.50, 'Audio');
+        INSERT INTO products (name, price, category) VALUES ('Speaker', 79.00, 'Audio');
+        INSERT INTO products (name, price, category) VALUES ('Webcam', 45.00, 'Accessories');
+        INSERT INTO products (name, price, category) VALUES ('USB Hub', 19.99, 'Accessories');
     """)
     db.commit()
     db.close()
@@ -61,33 +65,45 @@ def login():
 
         if user:
             session["user"] = user[1]
+            session["role"] = user[3]
             return redirect(url_for("dashboard"))
-        error = "Invalid credentials"
+        error = "Wrong username or password."
     return render_template("login.html", error=error)
+
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for("search"))
 
 
 @app.route("/dashboard")
 def dashboard():
     if "user" not in session:
         return redirect(url_for("login"))
-    return render_template("dashboard.html", user=session["user"])
+    return render_template("dashboard.html", user=session["user"],
+                           role=session.get("role", "user"))
 
 
 @app.route("/search")
 def search():
     q = request.args.get("q", "")
     results = []
+    catalog = []
+    db = get_db()
     if q:
         # VULN (A03 Injection): string-concatenated query
         query = "SELECT name, price FROM products WHERE name LIKE '%" + q + "%'"
         try:
-            db = get_db()
             results = db.execute(query).fetchall()
-            db.close()
         except Exception as e:
+            db.close()
             return "Database error: " + str(e), 500
+    else:
+        catalog = db.execute("SELECT name, price, category FROM products").fetchall()
+    db.close()
     # VULN (A03 XSS): template renders q with |safe (unescaped)
-    return render_template("search.html", q=q, results=results)
+    return render_template("search.html", q=q, results=results, catalog=catalog)
 
 
 if __name__ == "__main__":

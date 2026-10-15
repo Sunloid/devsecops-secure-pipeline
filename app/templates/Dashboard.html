@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Account - Circuit &amp; Co.{% endblock %}
+{% block content %}
+<section class="wrap narrow">
+  <h1 class="page-title">Welcome, {{ user }}</h1>
+  <div class="card">
+    <dl class="facts">
+      <dt>Signed in as</dt><dd>{{ user }}</dd>
+      <dt>Account type</dt><dd>{{ role }}</dd>
+    </dl>
+    <p><a class="btn-small" href="{{ url_for('search') }}">Back to the shop</a></p>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Circuit &amp; Co.{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="lab-strip">Training app with planted security flaws. Run it locally only.</div>
+  <header class="nav">
+    <a class="brand" href="{{ url_for('search') }}"><span class="mark"></span>Circuit &amp; Co.</a>
+    <nav>
+      <a href="{{ url_for('search') }}">Shop</a>
+      {% if session.user %}
+        <a href="{{ url_for('dashboard') }}">Account</a>
+        <a class="btn-small" href="{{ url_for('logout') }}">Log out</a>
+      {% else %}
+        <a class="btn-small" href="{{ url_for('login') }}">Log in</a>
+      {% endif %}
+    </nav>
+  </header>
+  <main>{% block content %}{% endblock %}</main>
+  <footer>Circuit &amp; Co. is a DevSecOps practice project. Nothing here is for sale.</footer>
+</body>
+</html>

@@ -3,12 +3,14 @@ DELIBERATELY VULNERABLE Flask app - for DevSecOps practice only.
 Never deploy this anywhere public.
 """
 import sqlite3
+import os 
+import secrets
 from flask import Flask, request, session, redirect, render_template, url_for
 
 app = Flask(__name__)
+app.secret_key = os.environ.get("FLASK_SECRET_KEY") or secrets.token_hex(32)
 
 # VULN (A02/A05): hardcoded secrets in source code
-app.secret_key = "dev-secret-key"
 DB_PASSWORD = "SuperSecret123!"   # SQLite ignores this, but we treat it like a real DB credential (Vault replaces it later)
 DATABASE = "store.db"
 

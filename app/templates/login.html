@@ -6,6 +6,7 @@
   <p class="sub">Use your store account to see your dashboard.</p>
   {% if error %}<p class="alert" role="alert">{{ error }}</p>{% endif %}
   <form class="card form" method="post">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <label for="username">Username</label>
     <input id="username" name="username" autocomplete="username">
     <label for="password">Password</label>

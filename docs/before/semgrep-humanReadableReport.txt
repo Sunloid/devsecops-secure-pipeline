@@ -1,0 +1,45 @@
+┌─────────────┐
+│ Scan Status │
+└─────────────┘
+  Scanning 12 files tracked by git with 1074 Code rules:
+                                                                                                                        
+  Language      Rules   Files          Origin      Rules                                                                
+ ─────────────────────────────        ───────────────────                                                               
+  <multilang>      60      12          Community    1074                                                                
+  html              1       6                                                                                           
+  python          243       1                                                                                           
+  json              4       1                                                                                           
+                                                                                                                        
+                  
+                  
+┌────────────────┐
+│ 1 Code Finding │
+└────────────────┘
+                                 
+    /src/app/templates/login.html
+    ❯❱ python.django.security.django-no-csrf-token.django-no-csrf-token
+          ❰❰ Blocking ❱❱
+          Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks.
+          Details: https://sg.run/N0Bp                                                                   
+                                                                                                         
+            8┆ <form class="card form" method="post">
+            9┆   <label for="username">Username</label>
+           10┆   <input id="username" name="username" autocomplete="username">
+           11┆   <label for="password">Password</label>
+           12┆   <input id="password" name="password" type="password" autocomplete="current-password">
+           13┆   <button type="submit">Log in</button>
+           14┆ </form>
+
+                
+                
+┌──────────────┐
+│ Scan Summary │
+└──────────────┘
+✅ Scan completed successfully.
+ • Findings: 1 (1 blocking)
+ • Rules run: 307
+ • Targets scanned: 12
+ • Parsed lines: ~99.4%
+ • Scan was limited to files tracked by git
+ • For a detailed list of skipped files and lines, run semgrep with the --verbose flag
+Ran 307 rules on 12 files: 1 finding.

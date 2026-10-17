@@ -108,3 +108,10 @@ jobs:
         with:
           target: "http://localhost:5000"
           fail_action: false
+          
+      - name: ZAP Baseline Scan
+        uses: zaproxy/action-baseline@v0.12.0
+        with:
+          target: "http://localhost:5000"
+          fail_action: false
+          cmd_options: "-I"

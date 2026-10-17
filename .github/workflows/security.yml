@@ -38,17 +38,19 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+            python-version: "3.11"
 
       - name: Install dependencies
         run: pip install -r app/requirements.txt
 
-      - name: Run Snyk
-        uses: snyk/actions/python@master
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          args: --file=app/requirements.txt --severity-threshold=high
+      - name: Install Snyk CLI
+        run: npm install -g snyk
+
+      - name: Authenticate Snyk
+        run: snyk auth ${{ secrets.SNYK_TOKEN }}
+
+      - name: Run Snyk test
+        run: snyk test --file=app/requirements.txt --severity-threshold=high
 
   dast:
     name: DAST (OWASP ZAP)

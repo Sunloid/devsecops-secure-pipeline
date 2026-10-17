@@ -14,3 +14,4 @@ rich==15.0.0
 stevedore==5.9.1
 Werkzeug==3.1.9
 WTForms==3.2.2
+hvac==2.3.0

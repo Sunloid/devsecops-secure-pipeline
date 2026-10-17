@@ -1,0 +1,169 @@
+(venv) PS C:\GitHub Projects\devsecops-secure-pipeline> snyk test --file=app/requirements.txt
+Testing  (app/requirements.txt) ...
+
+Tested 16 dependencies for known issues, found 17 issues, 49 vulnerable paths.
+
+Open Security issues: 17
+
+ ✗ [LOW] Use of Cache Containing Sensitive Information
+   Finding ID: SNYK-PYTHON-FLASK-15322678
+   Info: https://snyk.io/vuln/SNYK-PYTHON-FLASK-15322678
+   Introduced by: flask
+   Introduced through: app@0.0.0 > flask@2.0.1
+
+ ✗ [LOW] Access Restriction Bypass
+   Finding ID: SNYK-PYTHON-WERKZEUG-3319935
+   Info: https://snyk.io/vuln/SNYK-PYTHON-WERKZEUG-3319935
+   Introduced by: werkzeug
+   Introduced through: app@0.0.0 > werkzeug@2.0.1
+
+ ✗ [MEDIUM] Cross-site Scripting (XSS)
+   Finding ID: SNYK-PYTHON-JINJA2-6150717
+   Info: https://snyk.io/vuln/SNYK-PYTHON-JINJA2-6150717
+   Introduced by: jinja2
+   Introduced through: app@0.0.0 > jinja2@3.0.1
+
+ ✗ [MEDIUM] Cross-site Scripting (XSS)
+   Finding ID: SNYK-PYTHON-JINJA2-6809379
+   Info: https://snyk.io/vuln/SNYK-PYTHON-JINJA2-6809379
+   Introduced by: jinja2
+   Introduced through: app@0.0.0 > jinja2@3.0.1
+
+ ✗ [MEDIUM] Template Injection
+   Finding ID: SNYK-PYTHON-JINJA2-8548181
+   Info: https://snyk.io/vuln/SNYK-PYTHON-JINJA2-8548181
+   Introduced by: jinja2
+   Introduced through: app@0.0.0 > jinja2@3.0.1
+
+ ✗ [MEDIUM] Improper Neutralization
+   Finding ID: SNYK-PYTHON-JINJA2-8548987
+   Info: https://snyk.io/vuln/SNYK-PYTHON-JINJA2-8548987
+   Introduced by: jinja2
+   Introduced through: app@0.0.0 > jinja2@3.0.1
+
+ ✗ [MEDIUM] Template Injection
+   Finding ID: SNYK-PYTHON-JINJA2-9292516
+   Info: https://snyk.io/vuln/SNYK-PYTHON-JINJA2-9292516
+   Introduced by: jinja2
+   Introduced through: app@0.0.0 > jinja2@3.0.1
+
+ ✗ [MEDIUM] Improper Handling of Windows Device Names
+   Finding ID: SNYK-PYTHON-WERKZEUG-14151620
+   Info: https://snyk.io/vuln/SNYK-PYTHON-WERKZEUG-14151620
+   Introduced by: werkzeug
+   Introduced through: app@0.0.0 > werkzeug@2.0.1
+
+ ✗ [MEDIUM] Improper Handling of Windows Device Names
+   Finding ID: SNYK-PYTHON-WERKZEUG-14908843
+   Info: https://snyk.io/vuln/SNYK-PYTHON-WERKZEUG-14908843
+   Introduced by: werkzeug
+   Introduced through: app@0.0.0 > werkzeug@2.0.1
+
+ ✗ [MEDIUM] Improper Handling of Windows Device Names
+   Finding ID: SNYK-PYTHON-WERKZEUG-15322677
+   Info: https://snyk.io/vuln/SNYK-PYTHON-WERKZEUG-15322677
+   Introduced by: werkzeug
+   Introduced through: app@0.0.0 > werkzeug@2.0.1
+
+ ✗ [MEDIUM] Improper Handling of Windows Device Names
+   Finding ID: SNYK-PYTHON-WERKZEUG-20305246
+   Info: https://snyk.io/vuln/SNYK-PYTHON-WERKZEUG-20305246
+   Introduced by: werkzeug
+   Introduced through: app@0.0.0 > werkzeug@2.0.1
+
+ ✗ [MEDIUM] Inefficient Algorithmic Complexity
+   Finding ID: SNYK-PYTHON-WERKZEUG-6035177
+   Info: https://snyk.io/vuln/SNYK-PYTHON-WERKZEUG-6035177
+   Introduced by: werkzeug
+   Introduced through: app@0.0.0 > werkzeug@2.0.1
+
+ ✗ [MEDIUM] Directory Traversal
+   Finding ID: SNYK-PYTHON-WERKZEUG-8309091
+   Info: https://snyk.io/vuln/SNYK-PYTHON-WERKZEUG-8309091
+   Introduced by: werkzeug
+   Introduced through: app@0.0.0 > werkzeug@2.0.1
+
+ ✗ [MEDIUM] Allocation of Resources Without Limits or Throttling
+   Finding ID: SNYK-PYTHON-WERKZEUG-8309092
+   Info: https://snyk.io/vuln/SNYK-PYTHON-WERKZEUG-8309092
+   Introduced by: werkzeug
+   Introduced through: app@0.0.0 > werkzeug@2.0.1
+
+ ✗ [HIGH] Information Exposure
+   Finding ID: SNYK-PYTHON-FLASK-5490129
+   Info: https://snyk.io/vuln/SNYK-PYTHON-FLASK-5490129
+   Introduced by: flask
+   Introduced through: app@0.0.0 > flask@2.0.1
+
+ ✗ [HIGH] Denial of Service (DoS)
+   Finding ID: SNYK-PYTHON-WERKZEUG-3319936
+   Info: https://snyk.io/vuln/SNYK-PYTHON-WERKZEUG-3319936
+   Introduced by: werkzeug
+   Introduced through: app@0.0.0 > werkzeug@2.0.1
+
+ ✗ [HIGH] Remote Code Execution (RCE)
+   Finding ID: SNYK-PYTHON-WERKZEUG-6808933
+   Info: https://snyk.io/vuln/SNYK-PYTHON-WERKZEUG-6808933
+   Introduced by: werkzeug
+   Introduced through: app@0.0.0 > werkzeug@2.0.1
+
+Issues to fix by upgrading:
+
+  Upgrade flask@2.0.1 to flask@3.1.3 to fix
+  ✗ Use of Cache Containing Sensitive Information [LOW] [https://security.snyk.io/vuln/SNYK-PYTHON-FLASK-15322678] in flask@2.0.1
+    introduced by app@0.0.0 > flask@2.0.1 and 1 other path
+  ✗ Information Exposure [HIGH] [https://security.snyk.io/vuln/SNYK-PYTHON-FLASK-5490129] in flask@2.0.1
+    introduced by app@0.0.0 > flask@2.0.1 and 1 other path
+
+  Upgrade jinja2@3.0.1 to jinja2@3.1.6 to fix
+  ✗ Cross-site Scripting (XSS) [MEDIUM] [https://security.snyk.io/vuln/SNYK-PYTHON-JINJA2-6150717] in jinja2@3.0.1
+    introduced by app@0.0.0 > jinja2@3.0.1 and 2 other paths
+  ✗ Cross-site Scripting (XSS) [MEDIUM] [https://security.snyk.io/vuln/SNYK-PYTHON-JINJA2-6809379] in jinja2@3.0.1
+    introduced by app@0.0.0 > jinja2@3.0.1 and 2 other paths
+  ✗ Template Injection [MEDIUM] [https://security.snyk.io/vuln/SNYK-PYTHON-JINJA2-8548181] in jinja2@3.0.1
+    introduced by app@0.0.0 > jinja2@3.0.1 and 2 other paths
+  ✗ Improper Neutralization [MEDIUM] [https://security.snyk.io/vuln/SNYK-PYTHON-JINJA2-8548987] in jinja2@3.0.1
+    introduced by app@0.0.0 > jinja2@3.0.1 and 2 other paths
+  ✗ Template Injection [MEDIUM] [https://security.snyk.io/vuln/SNYK-PYTHON-JINJA2-9292516] in jinja2@3.0.1
+    introduced by app@0.0.0 > jinja2@3.0.1 and 2 other paths
+
+  Upgrade werkzeug@2.0.1 to werkzeug@3.1.9 to fix
+  ✗ Access Restriction Bypass [LOW] [https://security.snyk.io/vuln/SNYK-PYTHON-WERKZEUG-3319935] in werkzeug@2.0.1
+    introduced by app@0.0.0 > werkzeug@2.0.1 and 2 other paths
+  ✗ Improper Handling of Windows Device Names [MEDIUM] [https://security.snyk.io/vuln/SNYK-PYTHON-WERKZEUG-14151620] in werkzeug@2.0.1
+    introduced by app@0.0.0 > werkzeug@2.0.1 and 2 other paths
+  ✗ Improper Handling of Windows Device Names [MEDIUM] [https://security.snyk.io/vuln/SNYK-PYTHON-WERKZEUG-14908843] in werkzeug@2.0.1
+    introduced by app@0.0.0 > werkzeug@2.0.1 and 2 other paths
+  ✗ Improper Handling of Windows Device Names [MEDIUM] [https://security.snyk.io/vuln/SNYK-PYTHON-WERKZEUG-15322677] in werkzeug@2.0.1
+    introduced by app@0.0.0 > werkzeug@2.0.1 and 2 other paths
+  ✗ Improper Handling of Windows Device Names [MEDIUM] [https://security.snyk.io/vuln/SNYK-PYTHON-WERKZEUG-20305246] in werkzeug@2.0.1
+    introduced by app@0.0.0 > werkzeug@2.0.1 and 2 other paths
+  ✗ Inefficient Algorithmic Complexity [MEDIUM] [https://security.snyk.io/vuln/SNYK-PYTHON-WERKZEUG-6035177] in werkzeug@2.0.1
+    introduced by app@0.0.0 > werkzeug@2.0.1 and 2 other paths
+  ✗ Directory Traversal [MEDIUM] [https://security.snyk.io/vuln/SNYK-PYTHON-WERKZEUG-8309091] in werkzeug@2.0.1
+    introduced by app@0.0.0 > werkzeug@2.0.1 and 2 other paths
+  ✗ Allocation of Resources Without Limits or Throttling [MEDIUM] [https://security.snyk.io/vuln/SNYK-PYTHON-WERKZEUG-8309092] in werkzeug@2.0.1
+    introduced by app@0.0.0 > werkzeug@2.0.1 and 2 other paths
+  ✗ Denial of Service (DoS) [HIGH] [https://security.snyk.io/vuln/SNYK-PYTHON-WERKZEUG-3319936] in werkzeug@2.0.1
+    introduced by app@0.0.0 > werkzeug@2.0.1 and 2 other paths
+  ✗ Remote Code Execution (RCE) [HIGH] [https://security.snyk.io/vuln/SNYK-PYTHON-WERKZEUG-6808933] in werkzeug@2.0.1
+    introduced by app@0.0.0 > werkzeug@2.0.1 and 2 other paths
+
+╭──────────────────────────────────────────────────────────────────────╮
+│ Test Summary                                                         │
+│                                                                      │
+│   Organization:      sunloid                                         │
+│   Test type:         Software Composition Analysis                   │
+│   Project name:      app                                             │
+│   Project path:      C:\GitHub Projects\devsecops-secure-pipeline    │
+│   Target file:       app/requirements.txt                            │
+│                                                                      │
+│   Total security issues: 17                                          │
+│   Ignored: 0 [ 0 CRITICAL  0 HIGH  0 MEDIUM  0 LOW ]                 │
+│   Open   : 17 [ 0 CRITICAL  3 HIGH  12 MEDIUM  2 LOW ]               │
+╰──────────────────────────────────────────────────────────────────────╯
+
+
+💡 Tip
+
+   To view ignored issues, use the --include-ignores option.

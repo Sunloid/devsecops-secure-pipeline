@@ -1,0 +1,19 @@
+(venv) PS C:\GitHub Projects\devsecops-secure-pipeline> snyk test --file=app/requirements.txt
+Testing  (app/requirements.txt) ...
+
+Tested 17 dependencies for known issues, found 0 issues, 0 vulnerable paths.
+
+Open Security issues: 0
+
+╭──────────────────────────────────────────────────────────────────────╮
+│ Test Summary                                                         │
+│                                                                      │
+│   Organization:      sunloid                                         │
+│   Test type:         Software Composition Analysis                   │
+│   Project name:      app                                             │
+│   Project path:      C:\GitHub Projects\devsecops-secure-pipeline    │
+│   Target file:       app/requirements.txt                            │
+│                                                                      │
+│   Total security issues: 0                                           │
+╰──────────────────────────────────────────────────────────────────────╯
+

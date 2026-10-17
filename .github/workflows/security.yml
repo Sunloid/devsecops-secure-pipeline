@@ -107,13 +107,6 @@ jobs:
         run: curl -v http://localhost:5000
 
       - name: ZAP Baseline Scan
-        uses: zaproxy/action-baseline@v0.12.0
-        with:
-          target: "http://localhost:5000"
-          fail_action: false
-          artifact_name: "zap-scan-report"
-
-      - name: ZAP Baseline Scan
         run: |
           mkdir -p docs/ci-zap
           docker run --rm \

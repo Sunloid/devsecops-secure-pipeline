@@ -42,3 +42,5 @@ for the remaining tests, do you want to include all tests for 'PostgreSQL' exten
 [13:31:18] [CRITICAL] all tested parameters do not appear to be injectable. Try to increase values for '--level'/'--risk' options if you wish to perform more tests. If you suspect that there is some kind of protection mechanism involved (e.g. WAF) maybe you could try to use option '--tamper' (e.g. '--tamper=space2comment') and/or switch '--random-agent'
 
 [*] ending @ 13:31:18 /2026-10-17/
+
+NO vulnerabilities found with sqlmap testing. 

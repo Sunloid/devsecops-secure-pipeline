@@ -7,14 +7,23 @@ import os
 import secrets
 from flask import Flask, request, session, redirect, render_template, url_for
 from flask_wtf import CSRFProtect
+import hvac
 
+def load_secrets():
+    client = hvac.Client(
+        url=os.environ.get("VAULT_ADDR", "http://127.0.0.1:8200"),
+        token=os.environ.get("VAULT_TOKEN", "myroot"),
+    )
+    secret = client.secrets.kv.v2.read_secret_version(path="flask-app")
+    return secret["data"]["data"]
+
+secrets_data = load_secrets()
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("FLASK_SECRET_KEY") or secrets.token_hex(32)
+app.secret_key = secrets_data["secret_key"]
 csrf = CSRFProtect(app)
 
-# VULN (A02/A05): hardcoded secrets in source code
-DB_PASSWORD = "SuperSecret123!"   # SQLite ignores this, but we treat it like a real DB credential (Vault replaces it later)
+DB_PASSWORD = secrets_data["db_password"]
 DATABASE = "store.db"
 
 

@@ -56,6 +56,9 @@ jobs:
     name: DAST (OWASP ZAP)
     runs-on: ubuntu-latest
     needs: [sast, sca]
+    permissions: 
+      issues: write
+      contents: read
     services:
       vault:
         image: hashicorp/vault
@@ -108,7 +111,7 @@ jobs:
         with:
           target: "http://localhost:5000"
           fail_action: false
-          
+
       - name: ZAP Baseline Scan
         uses: zaproxy/action-baseline@v0.12.0
         with:

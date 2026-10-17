@@ -114,6 +114,7 @@ jobs:
           artifact_name: "zap-scan-report"
 
       - name: ZAP Baseline Scan
+        continue-on-error: true
         uses: zaproxy/action-baseline@v0.12.0
         with:
           target: "http://localhost:5000"

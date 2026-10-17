@@ -1,0 +1,2 @@
+FAIL-NEW: 0     FAIL-INPROG: 0  WARN-NEW: 11    WARN-INPROG: 0  INFO: 0 IGNORE: 0       PASS: 131
+Zap report showed zero vulnerabilities
